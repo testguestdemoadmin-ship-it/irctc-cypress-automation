@@ -49,7 +49,7 @@ def extract_text():
 @app.route('/')
 def health_check():
   return "Server is running", 200
-
+  
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(
       description="Run the OCR extraction server."
@@ -66,7 +66,10 @@ if __name__ == "__main__":
       default=5000,
       help="Port to run the server on (default: 5000)",
   )
-  args = parser.parse_args()
+  
+  # CHANGE THIS LINE: It will capture expected args and ignore the rest
+  args, unknown = parser.parse_known_args()
 
   # Run Flask server
   app.run(host=args.host, port=args.port)
+
